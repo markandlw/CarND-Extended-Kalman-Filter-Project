@@ -48,10 +48,6 @@ void KalmanFilter::Update(const VectorXd &z) {
   P_ = (I - K * H_) * P_;
 }
 
-const double pi = std::acos(-1);
-
-#define EPS (float)1.0E-6
-
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
   TODO:

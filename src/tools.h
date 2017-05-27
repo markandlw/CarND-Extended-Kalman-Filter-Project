@@ -7,6 +7,10 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using namespace std;
 
+#define EPS (float)1.0E-6
+
+const float pi = std::acos(-1);
+
 class Tools {
 public:
   /**
