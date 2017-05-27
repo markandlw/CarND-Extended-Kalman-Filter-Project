@@ -50,6 +50,8 @@ void KalmanFilter::Update(const VectorXd &z) {
 
 const double pi = std::acos(-1);
 
+#define EPS (float)1.0E-6
+
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
   TODO:
@@ -65,7 +67,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   //Convert from cartesian coordinates to polar for radar update
   float range = sqrt(px * px + py * py);
   VectorXd z_pred = VectorXd(3);
-  z_pred << range, atan2(py, px), (px * vx + py * vy) / range;
+  z_pred << range, atan2(py, px), (px * vx + py * vy) / max(EPS, range);
 
   MatrixXd Hj = tools.CalculateJacobian(x_);
 
